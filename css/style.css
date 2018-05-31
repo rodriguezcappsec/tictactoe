@@ -1,0 +1,29 @@
+th,
+td {
+    border: 1px solid red;
+    padding: 40px;
+    width: 15px;
+    text-align: center;
+}
+
+div,
+table {
+    text-align: center;
+    margin: 0 auto;
+}
+
+input {
+    border: 1px dotted black;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.createTTTBody {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+    background-color: #2196F3;
+    color: white;
+    font-size: 15px;
+}
