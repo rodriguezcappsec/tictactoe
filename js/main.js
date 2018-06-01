@@ -44,22 +44,18 @@ window.onload = () => {
                 createBoard(Number(clicking));
             });
     }
+    //Parse board into bidimensional array
     let boardToArray = () => {
         let tds = document.querySelectorAll("#tictactoe td");
         let count = 0;
-        // let trs = document.querySelectorAll("#tictactoe tr");
         var tempTds = '';
-        // for (let tr = 0; tr < trs.length; tr++) {
-        for (let td = 0; td < tds.length; td++) {
-            // tempTds += tds[td].innerHTML;
-            // ++count;
-            // count == document.getElementById('generateButton').value ?
-            //     (bdmsTicTac.push([tempTds]), tempTds = '', count = 0) : count;
-            console.log(tds[td].innerHTML);
-
+        for (let td = 0; td < tds.length; ++td) {
+            tds[td].innerHTML == '' ? tempTds += " " : tempTds += tds[td].innerHTML;
+            ++count;
+            count.toString() == document.getElementById('dimension').value ?
+                (bdmsTicTac.push(tempTds.split('')), tempTds = '', count = 0) : count;
         }
-        // }
-        // console.log(bdmsTicTac);
+        console.log(bdmsTicTac);
     }
     showBoard();
 }
