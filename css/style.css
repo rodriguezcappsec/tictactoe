@@ -1,19 +1,28 @@
-th,
 td {
     border: 1px solid red;
-    padding: 40px;
-    width: 15px;
+    padding: 60px;
+    width: 25px;
     text-align: center;
+    font-size: 20px;
 }
 
-div,
+.next-turn {
+    border: 1px solid red;
+    width: 150px;
+    height: 300px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+section,
 table {
     text-align: center;
     margin: 0 auto;
 }
 
-table {
-    border: 1px solid greenyellow;
+.aside {
+    float: right;
+    position: absolute;
 }
 
 input {

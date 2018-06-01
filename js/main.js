@@ -1,40 +1,65 @@
-let tttBody = (dimension) => {
-    let _tr;
-    let _td;
-    let _table = document.getElementById('tictactoe');
-    while (_table.firstChild) {
-        _table.removeChild(_table.firstChild)
-    }
-    for (let tr = 1; tr <= dimension; ++tr) {
-        _tr = document.createElement("tr");
-        _tr.id = tr;
-        for (let td = 1; td <= dimension; ++td) {
-            _td = document.createElement("td");
-            _td.id = `${tr}-${td}`;
-            _td.className = `${tr}-td-${td}`;
-            _tr.appendChild(_td)
+window.onload = () => {
+    //Creating the table
+    var bdmsTicTac = [];
+    let createBoard = (dimension) => {
+        let tr;
+        let td;
+        let table = document.getElementById('tictactoe');
+        while (table.firstChild) {
+            table.removeChild(table.firstChild)
         }
-        _table.appendChild(_tr);
+        for (let trIndex = 1; trIndex <= dimension; ++trIndex) {
+            tr = document.createElement("tr");
+            tr.id = trIndex;
+            for (let tdIndex = 1; tdIndex <= dimension; ++tdIndex) {
+                td = document.createElement("td");
+                td.id = `${trIndex}-${tdIndex}`;
+                td.className = `${trIndex}-td-${tdIndex}`;
+                tr.appendChild(td)
+            }
+            table.appendChild(tr);
+        }
+        listenerToEachTd();
     }
-}
+    //Click event to each cell in the table
+    let listenerToEachTd = () => {
+        let boolSwitcher = false;
+        document.querySelectorAll("#tictactoe td")
+            .forEach(e =>
+                e.addEventListener("click", function () {
+                    boolSwitcher = !boolSwitcher;
+                    if (this.innerText === '') {
+                        boolSwitcher === true ? this.innerText = "O" : this.innerText = "X";
+                    }
+                    boardToArray();
+                    bdmsTicTac = [];
+                }))
+    };
 
-let loopingThrough = () => {
-    let allTds = document.querySelectorAll(".ttt td");
-    for (let index = 0; index < allTds.length; index++) {
-        allTds[index].addEventListener("click", function () {
-            alert("works?");
-        });
-    }
-};
-
-let generateTTT = () => {
-    window.onload = () => {
+    //Showing the board based on the user input
+    let showBoard = () => {
         document.getElementById('generateButton')
             .addEventListener("click", function () {
                 let clicking = document.getElementById("dimension").value;
-                (clicking % 2 !== 1) ? alert("only odd numbers"): tttBody(Number(clicking));
+                createBoard(Number(clicking));
             });
-        loopingThrough();
     }
+    let boardToArray = () => {
+        let tds = document.querySelectorAll("#tictactoe td");
+        let count = 0;
+        // let trs = document.querySelectorAll("#tictactoe tr");
+        var tempTds = '';
+        // for (let tr = 0; tr < trs.length; tr++) {
+        for (let td = 0; td < tds.length; td++) {
+            // tempTds += tds[td].innerHTML;
+            // ++count;
+            // count == document.getElementById('generateButton').value ?
+            //     (bdmsTicTac.push([tempTds]), tempTds = '', count = 0) : count;
+            console.log(tds[td].innerHTML);
+
+        }
+        // }
+        // console.log(bdmsTicTac);
+    }
+    showBoard();
 }
-generateTTT();
