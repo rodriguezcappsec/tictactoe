@@ -12,6 +12,10 @@ table {
     margin: 0 auto;
 }
 
+table {
+    border: 1px solid greenyellow;
+}
+
 input {
     border: 1px dotted black;
     padding: 5px;
