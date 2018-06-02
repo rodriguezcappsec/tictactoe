@@ -1,13 +1,15 @@
 window.onload = () => {
-
+    //Array where board will be store to determine the winner
+    var boardStorage = [];
     //Creating the table
-    var bdmsTicTac = [];
     let createBoard = (dimension) => {
         if (dimension > 15) {
             alert(`Board is larger than 15 don't do that...`);
+        } else
+        if (/[A - Za - z]/g.exec(dimension)) {
+            alert("Only numerical values are accepted");
         } else {
-            let tr;
-            let td;
+            let tr, td;
             let table = document.getElementById('tictactoe');
             while (table.firstChild) {
                 table.removeChild(table.firstChild)
@@ -46,7 +48,7 @@ window.onload = () => {
                     if (this.innerText === '') {
                         boolSwitcher === true ? this.innerText = "O" : this.innerText = "X";
                         boardToArray();
-                        bdmsTicTac = [];
+                        boardStorage = [];
                     }
                 }))
     }
@@ -65,11 +67,11 @@ window.onload = () => {
 
             //Ternary condition, if the counter is equal the dimension
             count.toString() === document.getElementById('dimension').value ?
-                (bdmsTicTac.push(tempTds.split('')),
+                (boardStorage.push(tempTds.split('')),
                     tempTds = '',
                     count = 0) : count;
         }
-        console.log(bdmsTicTac);
+        console.log(boardStorage);
     }
 
 
