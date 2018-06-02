@@ -1,9 +1,13 @@
 td {
-    border: 1px solid red;
-    padding: 60px;
-    width: 25px;
+    border: 1px solid rgb(0, 110, 255);
+    height: 61px;
+    width: 70px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+td:hover {
+    cursor: pointer;
 }
 
 .next-turn {
@@ -20,16 +24,12 @@ table {
     margin: 0 auto;
 }
 
-.aside {
-    float: right;
-    position: absolute;
-}
-
 input {
-    border: 1px dotted black;
+    border: 1px solid transparent;
     padding: 5px;
     margin: 5px;
-    border-radius: 8px;
+    border-radius: 4px;
+    text-align: center;
 }
 
 .createTTTBody {
@@ -39,4 +39,5 @@ input {
     background-color: #2196F3;
     color: white;
     font-size: 15px;
+    border: 0px;
 }
