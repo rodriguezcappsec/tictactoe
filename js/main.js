@@ -1,7 +1,9 @@
 window.onload = () => {
     //Array where board will be store to determine the winner
     var boardStorage = [];
+    //Variable to switch everytime the user clicks (O= True, X=False)
     let boolSwitcher = false;
+
     //Creating the table
     let createBoard = (dimension) => {
         if (dimension > 15) {
@@ -38,7 +40,6 @@ window.onload = () => {
                 createBoard(Number(dimension));
             });
     }
-
     showBoard();
 
     //Click event to each cell in the table
@@ -51,47 +52,21 @@ window.onload = () => {
             .forEach(e =>
                 e.addEventListener("click", function () {
                     if (this.innerText === '') {
+                        //Boolean Switcher, TD text (O= True, X=False)
                         boolSwitcher = !boolSwitcher;
                         boolSwitcher === true ? this.innerText = "O" : this.innerText = "X";
+
+                        //Every time the user clicks, the board parses into a multidimensional array
                         boardToArray();
+                        //Alerting the winner
                         winner(boardStorage);
                     }
+                    //Clearing the board after user clicks, and the winner is determined
                     boardStorage = [];
                 }))
     }
-    let winner = (arr) => {
-        var hztlWinner = true;
-        let dgnlWinner = true;
-        let vtclWinner = true;
-        for (var index = 0; index < arr.length; index++) {
-            hztlWinner = arr[index].every(v => v == arr[index][0] && arr[index][0] != " ");
-            hztlWinner ? (
-                alert(`The winner is : ${arr[index][0]} | Row ${index + 1}`),
-                boolSwitcher = false,
-                document.querySelectorAll("#tictactoe td").forEach(e => e.innerHTML = '')
-            ) : "";
-        }
-        if (hztlWinner === false) {
-            let vtclChecker = [];
-            for (let y = 0; y < arr.length; y++) {
-                for (let x = 0; x < arr.length; x++) {
-                    vtclChecker.push(arr[x][y]);
-                    (vtclChecker.length === arr.length) ? (
-                        vtclWinner = vtclChecker.every(v => v == vtclChecker[0] && vtclChecker[0] !== " "),
-                        vtclWinner ? (
-                            alert(`The winner is : ${vtclChecker[0]} | Column ${y+1}`),
-                            boolSwitcher = false,
-                            document.querySelectorAll("#tictactoe td").forEach(e => e.innerHTML = '')
-                        ) : "",
-                        console.log(vtclChecker)
-                    ) : ""
-                }
-                vtclChecker = [];
-            }
-        }
-    }
 
-    //Parsing the board into multidimensional array
+    //Parsing the board into a multidimensional array
     let boardToArray = () => {
         let tds = document.querySelectorAll("#tictactoe td");
         let count = 0;
@@ -100,7 +75,7 @@ window.onload = () => {
             //Ternary conditions, making sure that the array will be able to have empty values(non-clicked cells in the board)
             tds[td].innerHTML == '' ? tempTds += ' ' : tempTds += tds[td].innerHTML;
 
-            //Counter to check everytime the loop increments to the given dimension
+            //Counting to check everytime the loop increments to the given dimension
             ++count;
 
             //Ternary condition, if the counter is equal the dimension
@@ -109,6 +84,40 @@ window.onload = () => {
                     tempTds = '',
                     count = 0) : count;
         }
-        //  console.log(boardStorage);
+        console.log(boardStorage);
+    }
+
+    //Determine the winner
+    let winner = (arr) => {
+        var hztlWinner = true;
+        let dgnlWinner = true;
+        let vtclWinner = true;
+        //Horizontal Checking
+        for (var index = 0; index < arr.length; index++) {
+            hztlWinner = arr[index].every(v => v == arr[index][0] && arr[index][0] != " ");
+            hztlWinner ? (
+                alert(`The winner is : ${arr[index][0]} | Row ${index + 1}`),
+                boolSwitcher = false,
+                setInterval(document.querySelectorAll("#tictactoe td").forEach(e => e.innerHTML = ''), 2000)
+            ) : "";
+        }
+        //Vertical Checking
+        if (hztlWinner === false) {
+            let vtclChecker = [];
+            for (let y = 0; y < arr.length; y++) {
+                for (let x = 0; x < arr.length; x++) {
+                    vtclChecker.push(arr[x][y]);
+                    (vtclChecker.length === arr.length) ? (
+                        vtclWinner = vtclChecker.every(v => v == vtclChecker[0] && vtclChecker[0] !== " "),
+                        vtclWinner ? (
+                            alert(`The winner is : ${vtclChecker[0]} | Column ${y + 1}`),
+                            boolSwitcher = false,
+                            setInterval(document.querySelectorAll("#tictactoe td").forEach(e => e.innerHTML = ''), 2000)
+                        ) : ""
+                    ) : ""
+                }
+                vtclChecker = [];
+            }
+        }
     }
 }

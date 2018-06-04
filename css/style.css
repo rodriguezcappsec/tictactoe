@@ -1,9 +1,12 @@
 td {
-    border: 1px solid rgb(0, 110, 255);
+    /* border: 1px solid rgb(0, 110, 255); */
+    border: 1px solid rgba(255, 0, 0, 0.4);
     height: 61px;
     width: 70px;
     text-align: center;
     font-size: 18px;
+    background: rgb(247, 247, 255);
+    font-weight: bold;
 }
 
 td:hover {
@@ -22,6 +25,10 @@ section,
 table {
     text-align: center;
     margin: 0 auto;
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 input {
