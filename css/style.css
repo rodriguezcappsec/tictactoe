@@ -1,12 +1,16 @@
 td {
     /* border: 1px solid rgb(0, 110, 255); */
-    border: 1px solid rgba(255, 0, 0, 0.4);
+    border: 1px solid rgb(255, 0, 0);
     height: 61px;
     width: 70px;
     text-align: center;
     font-size: 18px;
     /* background: rgb(247, 247, 255); */
     font-weight: bold;
+}
+
+body {
+    background-color: #3f474d;
 }
 
 td:hover {
@@ -25,7 +29,7 @@ section,
 table {
     text-align: center;
     margin: 0 auto;
-    color: #333;
+    color: whitesmoke;
     font-family: Helvetica, Arial, sans-serif;
     border-collapse: collapse;
     border-spacing: 0;

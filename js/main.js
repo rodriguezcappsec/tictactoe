@@ -3,7 +3,6 @@ window.onload = () => {
     var boardStorage = [];
     //Variable to switch everytime the user clicks (O= True, X=False)
     let boolSwitcher = false;
-
     //Creating the table
     let createBoard = (dimension) => {
         if (dimension > 15) {
@@ -140,13 +139,13 @@ window.onload = () => {
                 ) : ""
             }
         }
+        //Second diagonal Checking
         if (dgnlWinner === false) {
             let secondDgnlChecker = [];
             let y = arr.length - 1;
             for (let x = 0; x < arr.length; ++x) {
                 secondDgnlChecker.push(arr[x][y]);
                 --y;
-                console.log(secondDgnlChecker);
                 secondDgnlChecker.length === arr.length ? (
                     y = arr.length - 1,
                     secondDgnlWinner = secondDgnlChecker.every(v => v == secondDgnlChecker[0] && secondDgnlChecker[0] !== " "),
