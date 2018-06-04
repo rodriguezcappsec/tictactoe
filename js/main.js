@@ -10,7 +10,7 @@ window.onload = () => {
             alert(`Board is larger than 15 don't do that...`);
         } else
         if (/[A - Za - z]/g.exec(dimension)) {
-            alert("Only numerical values are accepted");
+            alert("Only numerical values are accepted!");
         } else {
             let tr, td;
             let table = document.getElementById('tictactoe');
@@ -28,6 +28,7 @@ window.onload = () => {
                 }
                 table.appendChild(tr);
             }
+            //Add click event to each TD, right after the table is created.
             listenerToEachTd();
         }
     }
@@ -84,7 +85,6 @@ window.onload = () => {
                     tempTds = '',
                     count = 0) : count;
         }
-        console.log(boardStorage);
     }
 
     //Determine the winner
