@@ -7,6 +7,8 @@ window.onload = () => {
     let createBoard = (dimension) => {
         if (dimension > 15) {
             alert(`Board is larger than 15 don't do that...`);
+        } else if (dimension < 3 || dimension < 0) {
+            alert("Dimension have to be greater then 3 and not less the 0");
         } else
         if (/[A - Za - z]/g.exec(dimension)) {
             alert("Only numerical values are accepted!");
